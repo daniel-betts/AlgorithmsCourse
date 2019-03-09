@@ -1,0 +1,7 @@
+/.metadata/
+/RemoteSystemTempFiles/
+**/bin/
+**/.settings/
+**/.classpath
+**/.project
+**/.gitinore
