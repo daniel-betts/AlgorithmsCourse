@@ -5,3 +5,5 @@
 **/.classpath
 **/.project
 **/.gitinore
+.DS_Store
+**/.DS_Store

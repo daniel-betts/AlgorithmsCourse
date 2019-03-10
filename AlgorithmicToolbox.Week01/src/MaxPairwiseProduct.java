@@ -4,6 +4,24 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
+/*
+ * Task:
+ * Find the maximum product of two distinct numbers in a
+ * sequence of non-negative integers.
+ * 
+ * Input: 	A sequence of non-negative integers.
+ * Output: 	The maximum value that can be obtained by multiplying
+ * 			two different elements from the sequence.
+ * 
+ * Sample 1
+ * 	Input	: 1 2 3
+ * 	Output	: 6
+ * 
+ * Sample 2
+ * 	 Input	: 7 5 14 2 8 8 10 1 2 3
+ *   Output	: 140
+ */
+
 public class MaxPairwiseProduct {
 
 	static long getMaxPairwiseProduct(int[] numbers) {
@@ -24,7 +42,7 @@ public class MaxPairwiseProduct {
 		}
 		return (long) second * (long) biggest;
 	}
-	
+
 	public static void main(String[] args) {
 		FastScanner fs = new FastScanner(System.in);
 		int n = fs.nextInt();
@@ -32,15 +50,15 @@ public class MaxPairwiseProduct {
 		for (int i = 0; i < n; ++i) {
 			numbers[i] = fs.nextInt();
 		}
-		
+
 		System.out.println(getMaxPairwiseProduct(numbers)); 
 
 	}
-	
+
 	static class FastScanner {
 		BufferedReader br;
 		StringTokenizer st;
-		
+
 		FastScanner(InputStream stream){
 			try {
 				br = new BufferedReader(new InputStreamReader(stream));
@@ -48,7 +66,7 @@ public class MaxPairwiseProduct {
 				e.printStackTrace();
 			}
 		}
-		
+
 		String next() {
 			while (st == null || !st.hasMoreTokens()) {
 				try {
@@ -59,10 +77,10 @@ public class MaxPairwiseProduct {
 			}
 			return st.nextToken();
 		}
-		
+
 		int nextInt() {
 			return Integer.parseInt(next());
 		}
 	}
-	
+
 }
