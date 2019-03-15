@@ -25,7 +25,7 @@ import java.util.*;
  *    F(327305) = 5
  */
 public class FibonacciLastDigit {
-	private static int getFibonacciLastDigitNaive(int n) {
+	private static int getFibonacciLastDigitEff(int n) {
 		if (n <= 1)
 			return n;
 
@@ -43,9 +43,25 @@ public class FibonacciLastDigit {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		int n = scanner.nextInt();
-		int c = getFibonacciLastDigitNaive(n);
+		int c = getFibonacciLastDigitEff(n);
 		System.out.println(c);
 		scanner.close();
 	}
+	
+//	private static int getFibonacciLastDigitNaive(int n) {
+//        if (n <= 1)
+//            return n;
+//
+//        int previous = 0;
+//        int current  = 1;
+//
+//        for (int i = 0; i < n - 1; ++i) {
+//            int tmp_previous = previous;
+//            previous = current;
+//            current = tmp_previous + current;
+//        }
+//
+//        return current % 10;
+//    }
 }
 
