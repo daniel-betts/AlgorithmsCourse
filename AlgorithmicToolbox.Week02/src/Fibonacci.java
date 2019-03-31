@@ -13,7 +13,6 @@ import java.util.Scanner;
  * 	Output	: 55 
  *    F(10) = 55
  */
-
 public class Fibonacci {
 	/* 
 	 * This function creates an array of size n + 1
