@@ -9,7 +9,7 @@ import java.util.*;
  * Input: 		The first line of the input contains an integer n. The second line
  * 				contains integers a1,a2,...,an.
  * Constraints:	1 <= n <= 100;
- * 				1 <= ai <= 10^3 for all 1 <= 1 <= n.
+ * 				1 <= ai <= 10^3 for all 1 <= i <= n.
  * Output: 		Output the largest number that can be composed out of a1, a2, ..., an.
  * 
  * Sample 1
@@ -29,19 +29,9 @@ import java.util.*;
  */
 public class LargestNumber {
 	private static boolean isGreaterOrEqualTo(String newValue, String oldValue) {
-		int minSize = Math.min(newValue.length(), oldValue.length());
-		for (int i = 0; i < minSize; i++) {
-			if (newValue.charAt(i) > oldValue.charAt(i)){
-				return true;
-			}
-			if (newValue.charAt(i) < oldValue.charAt(i)){
-				return false;
-			}
-		}
-		return newValue.length() < oldValue.length();
+		return Integer.parseInt(newValue + oldValue) >= Integer.parseInt(oldValue + newValue);
 	}
     private static String largestNumber(String[] a) {
-        //write your code here
     		List<String> numbers = new ArrayList<>(Arrays.asList(a));
     		String current;
     		String result = "";
