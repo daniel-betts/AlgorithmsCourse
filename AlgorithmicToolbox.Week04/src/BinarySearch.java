@@ -30,75 +30,95 @@ import java.util.StringTokenizer;
  */
 public class BinarySearch {
 	static int median;
-	static int recursiveSearch(int[] a, int x, int left, int right) {
+	static int[] a;
+	static int x;
+	static int recursiveSearch(int left, int right) {
 		if(right <= left) {
 			return -1;
 		}
 		median = left + (right - left) / 2;
 		int value = a[median];
 		if (value > x) {
-			return recursiveSearch(a, x, left, median);
+			return recursiveSearch(left, median);
 		} 
 		if (value < x) {
-			return recursiveSearch(a, x, median + 1, right);
+			return recursiveSearch(median + 1, right);
 		}
 		return median;
 	}
+
+	static int loopSearch(int left, int right) {
+		int value;
+		while (right - left > 0) {
+			median = left + (right - left) / 2;
+			value = a[median];
+			if (value > x) {
+				right = median;
+			} else if (value < x) {
+				left = median + 1;
+			} else {
+				return median;
+			}
+		}
+		return -1;
+	}
 	
-    static int binarySearch(int[] a, int x) {
-        int left = 0, right = a.length;
-        return recursiveSearch(a, x, left, right);
-    }
+	static int binarySearch(int curr_x) {
+		int left = 0, right = a.length;
+		x = curr_x;
+		//        return recursiveSearch(left, right);
+		return loopSearch(left, right);
+	}
 
-    static int linearSearch(int[] a, int x) {
-        for (int i = 0; i < a.length; i++) {
-            if (a[i] == x) return i;
-        }
-        return -1;
-    }
+	static int linearSearch(int x) {
+		for (int i = 0; i < a.length; i++) {
+			if (a[i] == x) return i;
+		}
+		return -1;
+	}
 
-    public static void main(String[] args) {
-        FastScanner scanner = new FastScanner(System.in);
-        int n = scanner.nextInt();
-        int[] a = new int[n];
-        for (int i = 0; i < n; i++) {
-            a[i] = scanner.nextInt();
-        }
-        int m = scanner.nextInt();
-        int[] b = new int[m];
-        for (int i = 0; i < m; i++) {
-          b[i] = scanner.nextInt();
-        }
-        for (int i = 0; i < m; i++) {
-            //replace with the call to binarySearch when implemented
-            System.out.print(binarySearch(a, b[i]) + " ");
-        }
-    }
-    static class FastScanner {
-        BufferedReader br;
-        StringTokenizer st;
+	public static void main(String[] args) {
+		FastScanner scanner = new FastScanner(System.in);
+		int n = scanner.nextInt();
+		a = new int[n];
+		for (int i = 0; i < n; i++) {
+			a[i] = scanner.nextInt();
+		}
+		int m = scanner.nextInt();
+		int[] b = new int[m];
+		for (int i = 0; i < m; i++) {
+			b[i] = scanner.nextInt();
+		}
+		for (int i = 0; i < m; i++) {
+			//replace with the call to binarySearch when implemented
+			System.out.print(binarySearch(b[i]) + " ");
+		}
+	}
+	static class FastScanner {
+		BufferedReader br;
+		StringTokenizer st;
 
-        FastScanner(InputStream stream) {
-            try {
-                br = new BufferedReader(new InputStreamReader(stream));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+		FastScanner(InputStream stream) {
+			try {
+				br = new BufferedReader(new InputStreamReader(stream));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 
-        String next() {
-            while (st == null || !st.hasMoreTokens()) {
-                try {
-                    st = new StringTokenizer(br.readLine());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            return st.nextToken();
-        }
+		String next() {
+			while (st == null || !st.hasMoreTokens()) {
+				try {
+					st = new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			return st.nextToken();
+		}
 
-        int nextInt() {
-            return Integer.parseInt(next());
-        }
-    }
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+	}
 }
